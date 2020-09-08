@@ -13,11 +13,11 @@ The following button will allow you to specify various configurations for your M
 deployment. The number of configuration options might be overwhelming, so some pre-defined/restricted deployment options for
 typical Moodle scenarios follow this.
 
-[![Deploy to Azure Fully Configurable](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FMoodle%2Fmaster%2Fazuredeploy.json)  [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FMoodle%2Fmaster%2Fazuredeploy.json)
+[![Deploy to Azure Fully Configurable](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fernani%2FMoodle%2Fmaster%2Fazuredeploy.json)  [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fernani%2FMoodle%2Fmaster%2Fazuredeploy.json)
 
 ## SSH Key Requirement
 
-All of the deployment options require you to provide a valid SSH protocol 2 (SSH-2) RSA public-private key pairs with a minimum length of 2048 bits. Other key formats such as ED25519 and ECDSA are not supported. 
+All of the deployment options require you to provide a valid SSH protocol 2 (SSH-2) RSA public-private key pairs with a minimum length of 2048 bits. Other key formats such as ED25519 and ECDSA are not supported.
 
 If you are unfamiliar with SSH and SSH keys, read this [article](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) which will explain how to generate a key pair.  You will create a ssh key pair. The public key is copied to the instances via the template. The private key is your identity that you will use to connect to different parts of the service.
 
@@ -31,7 +31,7 @@ Below are a list of pre-defined/restricted deployment options based on typical d
 |Large size deployment (with high availability)| Supporting more than 2000 concurrent users. This deployment will use Gluster (for high availability, requiring 2 VMs), MySQL (16 vCores) and redis cache, without other options like elastic search. |[![Deploy to Azure Minimally](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FMoodle%2Fmaster%2Fazuredeploy-large-ha.json)
 | Maximum |This maximal deployment will use Gluster (for high availability, adding 2 VMs for a Gluster cluster), MySQL with highest SKU, redis cache, elastic search (3 VMs), and pretty large storage sizes (both data disks and DB).|[![Deploy to Azure Maximally](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FMoodle%2Fmaster%2Fazuredeploy-maximal.json)
 
-NOTE: Depending on the region you choose to deploy the stack in - the deployment might fail due to SKUs being hardcoded in the template where they are not available. For example, today our small-mid-size deployment option hard codes Gen-4 Azure MySQL SKUs into the template, and if a region where that is currently not available in (i.e. westus2) is used, your deployment will fail.  If your deployment fails, please revert to the fully configurable template where possible and change the SKU paramater to one that exists in your region (i.e. Gen-5) or alternatively change your deployment region to one in which the SKU is available (i.e. southcentralus).     
+NOTE: Depending on the region you choose to deploy the stack in - the deployment might fail due to SKUs being hardcoded in the template where they are not available. For example, today our small-mid-size deployment option hard codes Gen-4 Azure MySQL SKUs into the template, and if a region where that is currently not available in (i.e. westus2) is used, your deployment will fail.  If your deployment fails, please revert to the fully configurable template where possible and change the SKU paramater to one that exists in your region (i.e. Gen-5) or alternatively change your deployment region to one in which the SKU is available (i.e. southcentralus).
 
 ## Stack Architecture
 
@@ -68,16 +68,16 @@ There below is a listing of useful plugins allow Moodle to be integrated with se
 At the current time this template allows the optional installation of the plugins above with a * next to them. Please note these plugins can be installed at any time post deployment via Moodle's own [plugin directory](https://moodle.org/plugins/). You can find a list of all Azure relevant plugins in the Moodle plugin directory [here](https://moodle.org/plugins/browse.php?list=set&id=91). You might also choose to follow this list via RSS.
 
 ## Moodle as a Managed Application
-You can learn more about how you can offer Moodle as a Managed Application on the Azure Marketplace or on an IT Service Catalog [here](https://github.com/Azure/Moodle/tree/master/managedApplication). This is a great read if you are offering Moodle hosting services today for your customers.
+You can learn more about how you can offer Moodle as a Managed Application on the Azure Marketplace or on an IT Service Catalog [here](https://github.com/ernani/Moodle/tree/master/managedApplication). This is a great read if you are offering Moodle hosting services today for your customers.
 
 ##  Observations about the current template
-The template is highly configurable. Full details of the configuration options can be found in our [documentation](https://github.com/Azure/Moodle/tree/master/docs) (more specifically in our [parameters documentation](https://github.com/Azure/Moodle/blob/master/docs/Parameters.md)). The following sections describe observations about the template that you will likely want to review before deploying:
+The template is highly configurable. Full details of the configuration options can be found in our [documentation](https://github.com/ernani/Moodle/tree/master/docs) (more specifically in our [parameters documentation](https://github.com/ernani/Moodle/blob/master/docs/Parameters.md)). The following sections describe observations about the template that you will likely want to review before deploying:
 
-**Scalability** Our system is designed to be highly scalable. To achieve this we provide a Virtual Machine Scaleset for the web tier. This is already configured to scale on high load. However, scaling the VMs is not instantaneous. If you know you will have a high-load situation(e.g. exam, you should manually scale the VMs prior to the event. This can be done through the Azure portal or the CLI. The database is less easily scaled at this point, but it is possible and documented in our [management documentation](https://github.com/Azure/Moodle/blob/master/docs/Manage.md#resizing-your-database).
+**Scalability** Our system is designed to be highly scalable. To achieve this we provide a Virtual Machine Scaleset for the web tier. This is already configured to scale on high load. However, scaling the VMs is not instantaneous. If you know you will have a high-load situation(e.g. exam, you should manually scale the VMs prior to the event. This can be done through the Azure portal or the CLI. The database is less easily scaled at this point, but it is possible and documented in our [management documentation](https://github.comernanie/Moodle/blob/master/docs/Manage.md#resizing-your-database).
 
-**SSL** The template fully supports SSL but it is not possible for the template to manage this for you. More information in our [managing certs documentation](https://github.com/Azure/Moodle/blob/master/docs/SslCert.md).
+**SSL** The template fully supports SSL but it is not possible for the template to manage this for you. More information in our [managing certs documentation](https://github.com/ernani/Moodle/blob/master/docs/SslCert.md).
 
-**Moodle PHP Code** The Moodle PHP code is stored on the Controller VM and copied to each front end VM upon deployment and upon request (should you update the Moodle code with your own code). For more information see our [management documentation](https://github.com/Azure/Moodle/blob/master/docs/Manage.md#updating-moodle-codesettings).
+**Moodle PHP Code** The Moodle PHP code is stored on the Controller VM and copied to each front end VM upon deployment and upon request (should you update the Moodle code with your own code). For more information see our [management documentation](https://github.comernanie/Moodle/blob/master/docs/Manage.md#updating-moodle-codesettings).
 
 **Database** Currently the best performance is achieved with [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/) and [Azure SQL Database](https://azure.microsoft.com/en-us/services/sql-database/). With [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgresql/) we have hit database constraints which caused processes to load up on the frontends until they ran out of memory. It is possible some PostgreSQL tuning might help here.  At this stage Azure Database for MySQL and PostgreSQL do not support being moved to a vnet. As a workaround, we use a firewall-based IP restriction allow access only to the controller VM and VMSS load-balancer IPs.
 
@@ -96,7 +96,7 @@ The template is highly configurable. Full details of the configuration options c
 
 3.  **What configuration do you recommend for my Moodle site?** The answer is it depends. At this stage we provide some rudimenatary t-shirt sized deployment recommendations and we are still building out our load testing tools and methodologies to provide more granularity. With that being said this is an area we are investing heavily in this area and we would love your contributions (i.e. load testing scripts, tools, methodologies etc.).
 
-If you have an immediate need for guidance for a larger sized deployment, you might want to share some details around your deployment on our [issues page](https://github.com/Azure/Moodle/issues) and we will do our best to respond. Please as much information about your deployment as possible such as:
+If you have an immediate need for guidance for a larger sized deployment, you might want to share some details around your deployment on our [issues page](https://github.comernanie/Moodle/issues) and we will do our best to respond. Please as much information about your deployment as possible such as:
 
   * average number of concurrent users your site will see
   * maximum level of concurrent/simultaenous users your site needs to support
@@ -107,17 +107,17 @@ If you have an immediate need for guidance for a larger sized deployment, you mi
 
 5. **How does this template relate to other Moodle offerings available on the Azure Marketplace?** It is generally not a good idea to run Moodle as a single VM in a production setting. This template is highly configurable and allows for high availability and redundancy.
 
-6. **How does this template relate to this [Azure Quickstart Template for Moodle](https://github.com/Azure/azure-quickstart-templates/tree/master/moodle-scalable-cluster-ubuntu)?** This repo is the working repo for the quickstart template. We will be pushing changes from this template to the quickstart template on a regular cadence.
+6. **How does this template relate to this [Azure Quickstart Template for Moodle](https://github.com/ernani/azure-quickstart-templates/tree/master/moodle-scalable-cluster-ubuntu)?** This repo is the working repo for the quickstart template. We will be pushing changes from this template to the quickstart template on a regular cadence.
 
 7. **I am already running Moodle on Azure. How does this work benefit me?** We are looking for painpoints from you and the broader Moodle on Azure community that we can help solve. We are also looking to understand where our implementation of Moodle on Azure outperforms or underperforms other implementations such as yours that are out in the wild. If you have observations, performance benchmarks or just general feedback about your experience running Moodle on Azure that you'd like to share we're extremely interested! Load testing is a very big area of focus, so if you have scripts you wouldn't mind contributing please let us know.
 
 8.  **Has anyone run this template sucessfully in production?** Yes they have. With that being said, we do not make any performance guarantees about this architecture.
 
-9.  **What type of improvements have you succeeded in making** Since we first began this effort we have managed to make great gains, achieving a >2x performance boost from our original configuration by making tweaks to things like where PHP files were stored. Our work is nowhere near over.  
+9.  **What type of improvements have you succeeded in making** Since we first began this effort we have managed to make great gains, achieving a >2x performance boost from our original configuration by making tweaks to things like where PHP files were stored. Our work is nowhere near over.
 
-10.  **What other Azure services (i.e. [Azure CDN](https://azure.microsoft.com/en-us/services/cdn/), [Azure Media Services](https://azure.microsoft.com/en-us/services/media-services/), [Azure Bot Service](https://azure.microsoft.com/en-us/services/bot-service/) etc.) will you be integrating with when this effort is complete?** It's not clear yet. We'll need your [feedback](https://github.com/Azure/Moodle/issues) to decide.
+10.  **What other Azure services (i.e. [Azure CDN](https://azure.microsoft.com/en-us/services/cdn/), [Azure Media Services](https://azure.microsoft.com/en-us/services/media-services/), [Azure Bot Service](https://azure.microsoft.com/en-us/services/bot-service/) etc.) will you be integrating with when this effort is complete?** It's not clear yet. We'll need your [feedback](https://github.com/ernani/Moodle/issues) to decide.
 
-11.  **Why is the database on a public subnet?** At this stage Azure Database for MySQL and PostgreSQL do not support being moved to a vnet. As a workaround, we use a firewall-based IP restriction allow access only to the controller VM and VMSS load-balancer IPs.  
+11.  **Why is the database on a public subnet?** At this stage Azure Database for MySQL and PostgreSQL do not support being moved to a vnet. As a workaround, we use a firewall-based IP restriction allow access only to the controller VM and VMSS load-balancer IPs.
 
 12.  **How can I help with this effort?** Please see below.
 
@@ -164,7 +164,7 @@ The following link shows how to set up per repository environment variables in T
 * **RESOURCEGROUP** *(default: azmdl-travis-XXX)*- Name to use for the resource group.
 * **FULLCI_BRANCHES** *(default: master)*- Name of branches (separated by ':') to always run FULL CI (if credentials are provided). Full CI will run a deployment test which will create and use resources from your Azure account.
 
-**NOTE:** You can trigger a full CI test by adding *[full ci]* or *[fullci]* anywhere in the commit message.  
+**NOTE:** You can trigger a full CI test by adding *[full ci]* or *[fullci]* anywhere in the commit message.
 
 **NOTE:** Make sure you set the environment variables to hidden otherwise they will be exposed publically at run time.
 
