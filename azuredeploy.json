@@ -1112,6 +1112,7 @@
             "azureSearchSku": "[parameters('azureSearchSku')]",
             "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
             "controllerVmSku": "[parameters('controllerVmSku')]",
+            "createOtherSubnetsSwitch": "[parameters('createOtherSubnetsSwitch')]",
             "customVnetId": "[parameters('customVnetId')]",
             "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
             "ctlrNsgName": "[concat('controller-nsg-',variables('resourceprefix'))]",
