@@ -127,7 +127,7 @@
                 "MOODLE_30_STABLE",
                 "MOODLE_29_STABLE"
             ],
-            "defaultValue": "MOODLE_38_STABLE",
+            "defaultValue": "MOODLE_39_STABLE",
             "metadata": {
                 "description": "The Moodle version you want to install."
             },
@@ -202,7 +202,7 @@
                 "7.3",
                 "7.4"
             ],
-            "defaultValue": "7.4",
+            "defaultValue": "7.3",
             "metadata": {
                 "description": "php version"
             },
@@ -277,9 +277,10 @@
         "mysqlVersion": {
             "allowedValues": [
                 "5.6",
-                "5.7"
+                "5.7",
+                "8.0"
             ],
-            "defaultValue": "5.7",
+            "defaultValue": "8.0",
             "metadata": {
                 "description": "Mysql version"
             },
@@ -655,7 +656,7 @@
                 "16.04-LTS",
                 "18.04-LTS"
             ],
-            "defaultValue": "16.04-LTS"
+            "defaultValue": "18.04-LTS"
         },
         "location": {
             "type": "string",
