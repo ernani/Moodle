@@ -23,6 +23,13 @@
             },
             "type": "bool"
         },
+        "createOtherSubnetsSwitch": {
+            "defaultValue": false,
+            "metadata": {
+                "description": "Switch to create other subnets"
+            },
+            "type": "bool"
+        },
         "azureBackupSwitch": {
             "defaultValue": false,
             "metadata": {
@@ -611,7 +618,7 @@
             "type": "string"
         },
         "vNetAddressSpace": {
-            "defaultValue": "172.31.0.0",
+            "defaultValue": "172.25.29.0",
             "metadata": {
                 "description": "Address range for the Moodle virtual network and various subnets - presumed /16 for a newly created vnet in case customVnetId is blank. Further subneting (a number of */24 subnets starting from the xxx.yyy.zzz.0/24 will be created on a newly created vnet or your BYO-vnet (specified in customVnetId parameter)."
             },
@@ -1263,6 +1270,6 @@
         "octets": "[split(parameters('vNetAddressSpace'), '.')]",
         "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name), 3, 6)]",
         "subnetSanPrefix": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),2)))]",
-        "subnetWebRange": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),0)), '.0/24')]"
+        "subnetWebRange": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.0/24')]"
     }
 }
