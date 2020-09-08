@@ -21,12 +21,6 @@
                 "description": "ssh public key"
             },
             "type": "string"
-        },
-        "customVnetId": {
-            "metadata": {
-                "description": "custom vnet id"
-            },
-            "type": "string"
         }
     },
     "resources": [
