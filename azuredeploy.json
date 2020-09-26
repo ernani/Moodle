@@ -73,7 +73,7 @@
             "type": "bool"
         },
         "htmlLocalCopySwitch": {
-            "defaultValue": false,
+            "defaultValue": true,
             "metadata": {
                 "description": "Switch to create a local copy of /moodle/html or not"
             },
@@ -512,7 +512,7 @@
             "type": "int"
         },
         "storageAccountType": {
-            "defaultValue": "Premium_LRS",
+            "defaultValue": "Standard_LRS",
             "allowedValues": [
                 "Standard_LRS",
                 "Standard_GRS",
