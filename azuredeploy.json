@@ -154,7 +154,7 @@
             "type": "string"
         },
         "controllerVmSku": {
-            "defaultValue": "Standard_DS1_v2",
+            "defaultValue": "Standard_D2s_v4",
             "metadata": {
                 "description": "VM size for the controller VM"
             },
@@ -172,7 +172,7 @@
             "type": "string"
         },
         "autoscaleVmSku": {
-            "defaultValue": "Standard_DS2_v2",
+            "defaultValue": "Standard_D4s_v4",
             "metadata": {
                 "description": "VM size for autoscaled web VMs"
             },
@@ -209,7 +209,7 @@
                 "7.3",
                 "7.4"
             ],
-            "defaultValue": "7.3",
+            "defaultValue": "7.4",
             "metadata": {
                 "description": "php version"
             },
@@ -243,7 +243,7 @@
                 16,
                 32
             ],
-            "defaultValue": 2,
+            "defaultValue": 4,
             "metadata": {
                 "description": "MySql/Postgresql vCores. For Basic tier, only 1 & 2 are allowed. For GeneralPurpose tier, 2, 4, 8, 16, 32 are allowed. For MemoryOptimized, 2, 4, 8, 16 are allowed."
             },

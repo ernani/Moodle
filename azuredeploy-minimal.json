@@ -44,7 +44,7 @@
                         "value": "[parameters('sshPublicKey')]"
                     },
                     "autoscaleVmSku": {
-                        "value": "Standard_DS1_v2"
+                        "value": "Standard_D4s_v4"
                     },
                     "enableAccelNwForOtherVmsSwitch": {
                         "value": false
