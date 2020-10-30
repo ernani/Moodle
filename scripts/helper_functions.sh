@@ -372,7 +372,7 @@ if [ -f "$SERVER_TIMESTAMP_FULLPATH" ]; then
       truncate -s 0 $SYNC_LOG_FULLPATH
     fi
     echo \$(date +%Y%m%d%H%M%S) >> $SYNC_LOG_FULLPATH
-    rsync -av --delete /moodle/html/moodle /var/www/html >> $SYNC_LOG_FULLPATH
+    rsync -avz --inplace --no-whole-file --delete /moodle/html/moodle /var/www/html >> $SYNC_LOG_FULLPATH
   fi
 else
   logger -p local2.notice -t moodle "Remote timestamp file ($SERVER_TIMESTAMP_FULLPATH) does not exist. Is /moodle mounted? Exiting with error."
