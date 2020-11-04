@@ -571,7 +571,7 @@
             "type": "int"
         },
         "azureSearchPartitionCount": {
-            "defaultValue": 3,
+            "defaultValue": 1,
             "allowedValues": [
                 1,
                 2,
