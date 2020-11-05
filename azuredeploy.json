@@ -113,7 +113,7 @@
             "type": "string"
         },
         "siteURL": {
-            "defaultValue": "www.example.org",
+            "defaultValue": "moodle.ernani.net",
             "metadata": {
                 "description": "URL for Moodle site"
             },
