@@ -186,7 +186,7 @@
             "type": "int"
         },
         "autoscaleVmCountMin": {
-            "defaultValue": 4,
+            "defaultValue": 1,
             "metadata": {
                 "description": "Minimum (also initial) number of autoscaled web VMs"
             },
